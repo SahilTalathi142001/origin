@@ -17,6 +17,11 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
+    - name: Debug - Check AWS CLI Configuration
+      run: |
+        aws sts get-caller-identity
+        aws cloudformation list-stacks
+
     - name: Deploy to AWS CloudFormation
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
